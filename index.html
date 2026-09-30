@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tehreem Shehzadi</title>
+<meta property="og:title" content="Tehreem Shehzadi · Business Analyst | Product Management">
+<meta property="og:description" content="Six things I shipped or built at ContentStudio: onboarding, a sample workspace, Brand Knowledge, navigation, empty states and a recruiting tool.">
+<meta property="og:image" content="/og.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+<meta name="description" content="Tehreem Shehzadi, Business Analyst moving into product management. Selected changes shipped at ContentStudio, before and after.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an index table up top (the whole portfolio in one glance), then one "stage" per shipped change.
+   Words stay in a narrow column; the work sits on a dark stage so screenshots read as the main thing. */
+:root{
+  --page:#FAFAF8; --ink:#0F1013; --soft:#5E626B; --line:#E3E4E0;
+  --stage:#16171B; --stage-line:#2A2C32; --stage-ink:#EDEEEA; --stage-soft:#9A9EA7;
+  --pin:#FF5B1F; --pin-ink:#FFFFFF; --good:#157A48;
+  --display:"Archivo","Arial Narrow",ui-sans-serif,sans-serif;
+  --text:"Geist",ui-sans-serif,system-ui,sans-serif;
+  --mono:"Geist Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --page:#0E0F11; --ink:#EEEFEB; --soft:#9A9EA7; --line:#24262B;
+  --stage:#191A1F; --stage-line:#2E3037; --good:#5FD196; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --page:#0E0F11; --ink:#EEEFEB; --soft:#9A9EA7; --line:#24262B;
+  --stage:#191A1F; --stage-line:#2E3037; --good:#5FD196; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--text);font-size:1rem;line-height:1.6;padding-inline:clamp(1rem,4vw,3rem);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{margin:0;font-family:var(--display);font-stretch:112%;letter-spacing:-.02em;line-height:1.02;text-wrap:balance}
+.w{max-width:76rem;margin-inline:auto}
+.mono{font-family:var(--mono);font-size:.75rem;letter-spacing:.04em;color:var(--soft)}
+:focus-visible{outline:2px solid var(--pin);outline-offset:3px;border-radius:4px}
+
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-block:1rem;flex-wrap:nowrap;background:color-mix(in srgb,var(--page) 90%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);margin-inline:calc(-1 * clamp(1rem,4vw,3rem));padding-inline:clamp(1rem,4vw,3rem);border-bottom:1px solid transparent;transition:border-color .3s}
+.top.scrolled{border-bottom-color:var(--line)}
+.top .me{font-family:var(--display);font-stretch:118%;font-weight:760;text-decoration:none;opacity:0;transform:translateY(6px);transition:opacity .35s ease,transform .35s ease;pointer-events:none}
+.top.scrolled .me{opacity:1;transform:none;pointer-events:auto}
+.top nav{display:flex;align-items:center;gap:.35rem;font-size:.95rem;font-weight:500}
+.top nav .links{display:flex;gap:.15rem;padding:.25rem;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--ink) 3%,var(--page))}
+.top nav .links a{text-decoration:none;color:var(--ink);padding:.45rem .95rem;border-radius:999px;transition:background .25s,color .25s}
+.top nav .links a.on{background:var(--ink);color:var(--page)}
+.top nav .links a:not(.on):hover{background:color-mix(in srgb,var(--ink) 8%,transparent)}
+.top nav .cv{text-decoration:none;background:var(--ink);color:var(--page);padding:.6rem 1.1rem;border-radius:999px;font-weight:600;display:inline-flex;align-items:center;gap:.4rem;transition:transform .2s}
+.top nav .cv:hover{transform:translateY(-1px)}
+.brandmark{position:relative;display:grid;align-items:center}
+.brandmark>*{grid-area:1/1}
+.mono-mark{font-family:var(--display);font-stretch:118%;font-weight:800;font-size:.95rem;width:2.4rem;height:2.4rem;border-radius:50%;background:var(--ink);color:var(--page);display:grid;place-items:center;letter-spacing:-.02em;transition:opacity .35s,transform .35s}
+.top.scrolled .mono-mark{opacity:0;transform:scale(.8)}
+@media (max-width:520px){.top .me{display:none}.top.scrolled .mono-mark{opacity:1;transform:none}.top nav .links a{padding:.4rem .6rem}.top nav .cv{padding:.5rem .8rem}.top nav{font-size:.88rem}}
+
+.intro{padding-block:3.5rem 3.5rem;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:2rem 3rem;align-items:center}
+.intro-text{display:grid;gap:1rem;min-width:0}
+.kicker{font-family:var(--mono);font-size:.85rem;color:var(--pin);letter-spacing:.02em}
+.intro h1{font-size:clamp(3rem,8vw,7.4rem);font-weight:800;letter-spacing:-.035em;line-height:.92;cursor:default;touch-action:pan-y}
+.intro h1 .line{display:block;white-space:nowrap}
+.intro h1 .ch{display:inline-block;font-variation-settings:"wdth" 108,"wght" 780;transition:font-variation-settings .35s cubic-bezier(.2,.8,.2,1)}
+html.live-name .intro h1 .ch{transition:none}
+.lede{font-size:1.15rem;color:var(--soft);max-width:36rem;margin-top:.5rem}
+
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem 1.5rem;padding-top:2rem;border-top:2px solid var(--ink)}
+.tile{text-decoration:none;display:grid;gap:.55rem;align-content:start;min-width:0}
+.tile-img{position:relative;aspect-ratio:16/10;border-radius:10px;overflow:hidden;background:var(--stage);border:1px solid var(--line)}
+.tile-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top left;transition:opacity .25s ease,transform .5s ease;background:#fff}
+.tile-img .bef{opacity:0;object-fit:contain}
+.tile-img .chip{position:absolute;left:.6rem;top:.6rem;font:500 .7rem var(--mono);background:var(--ink);color:var(--page);padding:.2rem .5rem;border-radius:4px;opacity:0;transition:opacity .25s ease}
+.tile[data-has-before]:hover .bef,.tile[data-has-before]:focus-visible .bef,.tile[data-has-before]:hover .chip,.tile[data-has-before]:focus-visible .chip{opacity:1}
+.tile:not([data-has-before]):hover .after{transform:scale(1.03)}
+.tile-meta{display:flex;justify-content:space-between;align-items:center;margin-top:.3rem}
+.tn{font:500 .78rem var(--mono);color:var(--pin)}
+.ts{font:500 .72rem var(--mono);color:var(--good)}
+.ts.side{color:var(--soft)}
+.tile h3{font-size:1.45rem;font-weight:720}
+.tile p{color:var(--soft);font-size:.95rem;line-height:1.45}
+.tp{font:500 .72rem var(--mono);color:var(--ink);opacity:.7}
+
+.proj{padding-block:5rem 1rem;display:grid;gap:1.75rem;scroll-margin-top:1rem}
+.proj-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem 3rem;align-items:end}
+.proj-head h2{font-size:clamp(1.8rem,3.6vw,2.8rem);font-weight:740}
+.proj-head .n{font-family:var(--mono);color:var(--pin);font-size:.85rem;display:block;margin-bottom:.8rem}
+.story{display:grid;gap:.9rem;max-width:36rem}
+.story p{font-size:1.05rem}
+.facts{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;font-size:.9rem}
+.facts span{color:var(--soft)}
+.facts span b{color:var(--ink);font-weight:600}
+
+.stage{background:var(--stage);color:var(--stage-ink);border-radius:14px;padding:clamp(1rem,2.5vw,2rem);display:grid;gap:1.25rem;min-width:0}
+.stage .mono{color:var(--stage-soft)}
+.stage-bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+
+.shot{position:relative;background:#fff;border-radius:8px;overflow:hidden;line-height:0}
+.shot img{width:100%;height:auto;display:block}
+.zoom{all:unset;cursor:zoom-in;display:block;border-radius:8px}
+
+.next{display:grid;gap:.35rem;font-size:.95rem;color:var(--soft);max-width:44rem;padding-top:.5rem}
+.next b{color:var(--ink);font-weight:600}
+
+.race{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.25rem}
+.lane{display:grid;gap:.7rem;min-width:0;align-content:start}
+.lane-top{display:flex;justify-content:space-between;align-items:baseline;gap:.75rem;flex-wrap:wrap}
+.lane-top h3{font-size:1.05rem;font-weight:700;color:var(--stage-ink)}
+.frame{aspect-ratio:16/9;background:#fff;border-radius:8px;overflow:hidden;display:grid;place-items:center;position:relative}
+.frame img{width:100%;height:100%;object-fit:contain;display:block}
+.frame .end{position:absolute;inset:0;display:grid;place-content:center;gap:.4rem;text-align:center;background:#F1F2EF;color:#4A4E57;padding:1rem;line-height:1.4}
+.frame .end strong{font-family:var(--display);font-stretch:112%;font-size:1.3rem;color:#1B1C20}
+.has{font-size:.92rem;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.has .tag{font-family:var(--mono);font-size:.7rem;padding:.15rem .5rem;border-radius:4px;background:var(--stage-line);color:var(--stage-soft)}
+.has.win .tag{background:var(--pin);color:var(--pin-ink)}
+.step-label{font-size:.92rem;color:var(--stage-ink)}
+.controls{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.controls input[type=range]{flex:1 1 10rem;accent-color:var(--pin)}
+.cbtn{font-family:var(--text);font-weight:600;font-size:.88rem;background:var(--stage-ink);color:var(--stage);border:0;border-radius:999px;padding:.5rem 1rem;cursor:pointer}
+.cbtn.ghost{background:transparent;color:var(--stage-ink);border:1px solid var(--stage-line)}
+.cbtn:disabled{opacity:.35;cursor:default}
+
+.hold{position:relative}
+.hold .before{position:absolute;inset:0;background:#fff;display:grid;place-items:center;opacity:0;transition:opacity .18s ease;border-radius:8px;overflow:hidden}
+.hold .before img{max-width:100%;max-height:100%;width:auto;height:auto}
+.hold.showing .before{opacity:1}
+.hbtn{font-family:var(--text);font-weight:600;font-size:.88rem;background:var(--pin);color:var(--pin-ink);border:0;border-radius:999px;padding:.55rem 1.1rem;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:none}
+.hbtn[aria-pressed="true"]{background:var(--stage-ink);color:var(--stage)}
+.state{font-family:var(--mono);font-size:.75rem;color:var(--stage-soft)}
+
+.pins{position:relative}
+.pin{position:absolute;transform:translate(-50%,-50%);width:1.7rem;height:1.7rem;border-radius:50%;background:var(--pin);color:var(--pin-ink);border:2px solid #fff;font:600 .78rem var(--mono);display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.35);padding:0;line-height:1}
+.pin[aria-pressed="true"]{background:#fff;color:var(--pin);border-color:var(--pin)}
+.notes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem 1.5rem;counter-reset:n}
+.notes li{display:grid;grid-template-columns:1.7rem minmax(0,1fr);gap:.6rem;font-size:.93rem;color:var(--stage-soft);padding:.4rem;border-radius:6px;cursor:pointer}
+.notes li::before{counter-increment:n;content:counter(n);width:1.4rem;height:1.4rem;border-radius:50%;background:var(--stage-line);color:var(--stage-ink);font:600 .7rem var(--mono);display:grid;place-items:center}
+.notes li.on{background:var(--stage-line);color:var(--stage-ink)}
+.notes li.on::before{background:var(--pin);color:#fff}
+.notes b{color:var(--stage-ink);font-weight:600}
+
+.duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.25rem}
+.duo figure{margin:0;display:grid;gap:.5rem;min-width:0;align-content:start}
+.duo figcaption{font-size:.88rem;color:var(--stage-soft)}
+.label-ev{font-family:var(--mono);font-size:.68rem;color:var(--stage-soft);line-height:1.5}
+
+.also{padding-block:4rem 1rem;display:grid;gap:1rem;border-top:1px solid var(--line);margin-top:4rem}
+.also h2{font-size:1.4rem;font-weight:700}
+.also ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;max-width:44rem}
+.also li{display:grid;gap:.2rem;font-size:.95rem;color:var(--soft);min-width:0}
+.also li b{color:var(--ink);font-weight:600}
+
+.contact{padding-block:4rem 5rem;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:2rem;border-top:1px solid var(--line);margin-top:3rem}
+.contact h2{font-size:clamp(1.8rem,4vw,3rem);font-weight:760}
+.contact .rows{display:grid;gap:.8rem;align-content:start}
+.crow{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.crow .v{font-family:var(--mono);font-size:.95rem;user-select:all;overflow-wrap:anywhere}
+.copy{font-family:var(--mono);font-size:.7rem;border:1px solid var(--line);background:none;color:var(--soft);border-radius:6px;padding:.2rem .5rem;cursor:pointer}
+.bio{color:var(--soft);font-size:.95rem;max-width:30rem;margin-top:1rem}
+
+dialog.lb{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh}
+dialog.lb::backdrop{background:rgba(8,9,11,.9)}
+dialog.lb img{display:block;max-width:96vw;max-height:88vh;width:auto;height:auto;border-radius:8px}
+dialog.lb button{position:fixed;top:calc(env(safe-area-inset-top,0px) + 1rem);right:1rem;font:500 .8rem var(--mono);background:#fff;color:#111;border:0;border-radius:999px;padding:.45rem .9rem;cursor:pointer}
+
+@media (max-width:860px){
+  .proj-head,.race,.duo,.contact{grid-template-columns:minmax(0,1fr)}
+  .notes{grid-template-columns:minmax(0,1fr)}
+  .also ul{grid-template-columns:minmax(0,1fr)}
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:520px){
+  .pin{width:1.35rem;height:1.35rem;font-size:.65rem}
+  .tiles{grid-template-columns:minmax(0,1fr)}
+  .intro{padding-block:3rem 2rem}
+  .proj{padding-block:3.5rem 1rem}
+}
+@media (prefers-reduced-motion:reduce){.hold .before{transition:none}}
+/* empty states */
+.tabs{display:flex;gap:.4rem;flex-wrap:wrap}
+.tab{font-family:var(--text);font-weight:600;font-size:.85rem;background:transparent;color:var(--stage-soft);border:1px solid var(--stage-line);border-radius:999px;padding:.4rem .9rem;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--stage-ink);color:var(--stage);border-color:var(--stage-ink)}
+.es-box{background:#fff;border-radius:8px;aspect-ratio:864/400;display:grid;place-items:center;overflow:hidden;position:relative}
+.es-box>img{width:100%;height:100%;object-fit:contain}
+.old-es{position:absolute;inset:0;background:#fff;display:grid;place-content:center;justify-items:center;gap:.9rem;padding:1rem;opacity:0;transition:opacity .18s ease}
+.hold.showing .old-es{opacity:1}
+.old-es .art{width:min(13rem,40vw);aspect-ratio:4/3;border-radius:10px;background:repeating-linear-gradient(45deg,#E7E8EC 0 8px,#F1F2F5 8px 16px);border:2px dashed #C9CBD2}
+.old-es .cta{background:#2F6FEA;color:#fff;font:600 .8rem var(--text);padding:.5rem 1rem;border-radius:6px}
+.old-es .rec{position:absolute;left:.75rem;bottom:.6rem;font:500 .65rem var(--mono);color:#8A8D95}
+.anatomy{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--stage-line);border:1px solid var(--stage-line);border-radius:8px;overflow:hidden}
+.anatomy>div{background:var(--stage);padding:.9rem 1rem;display:grid;gap:.2rem;min-width:0}
+.anatomy b{font-family:var(--mono);font-size:.7rem;color:var(--pin);font-weight:500}
+.anatomy span{font-size:.9rem;color:var(--stage-ink)}
+@media (max-width:860px){.anatomy{grid-template-columns:minmax(0,1fr)}.also ul{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){.old-es{transition:none}}
+/* hr tool */
+.hr-steps{display:flex;gap:.4rem;flex-wrap:wrap}
+.hr-view{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,17rem);gap:1.5rem;align-items:start}
+.hr-frame{background:#F4F1EB;border-radius:8px;overflow:hidden;display:grid;place-items:center;min-height:14rem}
+.hr-frame img{display:block;max-width:100%;height:auto}
+.hr-cap{display:grid;gap:.5rem;align-content:start}
+.hr-cap h3{font-size:1.25rem;font-weight:700;color:var(--stage-ink)}
+.hr-cap p{font-size:.95rem;color:var(--stage-soft)}
+@media (max-width:860px){.hr-view{grid-template-columns:minmax(0,1fr)}}
+dialog.cvd{border:0;padding:0;background:var(--page);color:var(--ink);width:min(52rem,96vw);max-height:92vh;border-radius:12px;overflow:hidden}
+dialog.cvd::backdrop{background:rgba(8,9,11,.85)}
+.cvbar{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.8rem 1rem;border-bottom:1px solid var(--line);font-weight:600;font-size:.92rem}
+.cvbar button{font:500 .8rem var(--mono);background:var(--ink);color:var(--page);border:0;border-radius:999px;padding:.4rem .9rem;cursor:pointer}
+.cvpages{overflow-y:auto;max-height:calc(92vh - 3.2rem);padding:1rem;display:grid;gap:1rem;background:var(--line)}
+.cvpages img{display:block;width:100%;height:auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.15);background:#fff}
+/* motion */
+.progress{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:3px;width:100%;background:var(--pin);transform-origin:0 50%;transform:scaleX(0);z-index:50;pointer-events:none}
+.intro h1 .line{display:block;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.intro h1 .line:nth-child(2){animation-delay:.08s}
+.intro .kicker{animation:fade .6s .2s ease both}
+.intro .lede{animation:fade .6s .35s ease both}
+@keyframes rise{from{transform:translateY(40%);opacity:.001}to{transform:none;opacity:1}}
+@keyframes fade{from{opacity:.001;transform:translateY(8px)}to{opacity:1;transform:none}}
+html.rv-on .rv:not(.in){opacity:.001;transform:translateY(28px)}
+html.rv-on .rv{transition:opacity .7s ease,transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
+html.rv-on .stage.rv:not(.in){transform:translateY(40px) scale(.985)}
+@media (prefers-reduced-motion:reduce){
+  .intro h1 .line,.intro .kicker,.intro .lede{animation:none}
+  html.rv-on .rv:not(.in){opacity:1;transform:none}
+  .progress{display:none}
+}
+/* hero deck */
+.deck-wrap{position:relative;display:grid;justify-items:center;gap:.75rem;min-width:0}
+.deck{position:relative;width:100%;max-width:36rem;aspect-ratio:1.35/1;perspective:1100px}
+.deck-inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.card{position:absolute;left:50%;bottom:16%;width:52%;aspect-ratio:16/11;margin-left:-26%;border-radius:12px;overflow:hidden;background:var(--stage);border:1px solid color-mix(in srgb,var(--ink) 14%,transparent);box-shadow:0 18px 40px -18px rgba(0,0,0,.45),0 2px 6px rgba(0,0,0,.12);transform-origin:50% 120%;
+  transform:translate3d(0,40px,0) rotate(0deg) scale(.92);opacity:0;transition:transform .9s cubic-bezier(.2,.9,.25,1),opacity .5s ease,box-shadow .3s;cursor:pointer;text-decoration:none;display:block}
+.card img{width:100%;height:100%;object-fit:cover;object-position:var(--pos,top left);display:block;background:#fff}
+.card .lab{position:absolute;left:.5rem;right:.5rem;bottom:.5rem;display:flex;justify-content:space-between;align-items:center;gap:.5rem;background:color-mix(in srgb,var(--stage) 92%,transparent);color:var(--stage-ink);border-radius:8px;padding:.45rem .6rem;font:600 .82rem var(--text);opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s}
+.card .lab i{font:500 .7rem var(--mono);color:var(--pin);font-style:normal}
+.deck.dealt .card{opacity:1}
+.card:hover,.card:focus-visible{box-shadow:0 30px 60px -20px rgba(0,0,0,.55),0 0 0 2px var(--pin)}
+.card:hover .lab,.card:focus-visible .lab{opacity:1;transform:none}
+.deck-hint{opacity:0;transition:opacity .6s 1.6s}
+.deck.dealt+.deck-hint{opacity:1}
+@media (max-width:860px){
+  .intro{grid-template-columns:minmax(0,1fr)}
+  .deck{max-width:28rem;aspect-ratio:1.55/1}
+}
+@media (prefers-reduced-motion:reduce){.card,.deck-inner{transition:none}}
+.cvact{display:flex;gap:.5rem;align-items:center}.cvact a{font:500 .8rem var(--mono);color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:.35rem .8rem}.cvact a:hover{border-color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<div class="w">
+  <header class="top">
+    <div class="brandmark"><span class="mono-mark" aria-hidden="true">TS</span><a class="me" href="#" aria-hidden="true" tabindex="-1">Tehreem Shehzadi</a></div>
+    <nav aria-label="Main"><div class="links"><a href="#work" data-sec="work">Work</a><a href="#contact" data-sec="contact">Contact</a><a href="#resume" data-cv data-sec="resume">Resume</a></div></nav>
+  </header>
+
+  <section class="intro">
+    <div class="intro-text">
+      <p class="kicker">Business Analyst <span aria-hidden="true">&nbsp;|&nbsp;</span> Product Management</p>
+      <h1 id="name" aria-label="Tehreem Shehzadi"><span class="line" aria-hidden="true">Tehreem</span><span class="line" aria-hidden="true">Shehzadi</span></h1>
+      <p class="lede">I work in the product team at ContentStudio, a social media management platform. Here are six things I shipped or built. Pick a card.</p>
+    </div>
+    <div class="deck-wrap" aria-label="Projects">
+      <div class="deck" id="deck"></div>
+      <p class="deck-hint mono" id="deck-hint">Hover to lift · click to open</p>
+    </div>
+  </section>
+
+  <div class="tiles" id="work">
+      <a class="tile" href="#onboarding" data-has-before>
+        <div class="tile-img"><img class="after" src="img/ob-new-5.webp" alt="" loading="lazy"><img class="bef" src="img/ob-old-3.webp" alt="" loading="lazy"><span class="chip">Before</span></div>
+        <div class="tile-meta"><span class="tn">01</span><span class="ts">● Live</span></div>
+        <h3>Onboarding</h3><p>One website URL gets new users a brand profile and ready posts.</p><span class="tp">Redesigned the flow</span>
+      </a>
+      <a class="tile" href="#sample">
+        <div class="tile-img"><img class="after" src="img/sw-cal.webp" alt="" loading="lazy"></div>
+        <div class="tile-meta"><span class="tn">02</span><span class="ts">● Live</span></div>
+        <h3>Sample workspace</h3><p>A made-up brand fills every module, so new accounts don't look empty.</p><span class="tp">Led it end to end</span>
+      </a>
+      <a class="tile" href="#brand" data-has-before>
+        <div class="tile-img"><img class="after" src="img/bk-new-1.webp" alt="" loading="lazy"><img class="bef" src="img/bk-old.webp" alt="" loading="lazy"><span class="chip">Before</span></div>
+        <div class="tile-meta"><span class="tn">03</span><span class="ts">● Live</span></div>
+        <h3>Brand Knowledge</h3><p>The AI's brand profile is built from sources, not typed by hand.</p><span class="tp">Redesign + Lovable prototype</span>
+      </a>
+      <a class="tile" href="#nav" data-has-before>
+        <div class="tile-img"><img class="after" src="img/nav-new.webp" alt="" loading="lazy"><img class="bef" src="img/nav-old.webp" alt="" loading="lazy"><span class="chip">Before</span></div>
+        <div class="tile-meta"><span class="tn">04</span><span class="ts">● Live</span></div>
+        <h3>Navigation</h3><p>Top bar replaced with a sidebar.</p><span class="tp">Research, prototype, epic</span>
+      </a>
+      <a class="tile" href="#empty">
+        <div class="tile-img"><img class="after" src="img/es-ig.webp" alt="" loading="lazy"></div>
+        <div class="tile-meta"><span class="tn">05</span><span class="ts">● Live</span></div>
+        <h3>Empty states</h3><p>Blank analytics screens now show what you'll get before asking.</p><span class="tp">Worked on the pattern</span>
+      </a>
+      <a class="tile" href="#hr">
+        <div class="tile-img"><img class="after" src="img/hr-board.webp" alt="" loading="lazy"></div>
+        <div class="tile-meta"><span class="tn">06</span><span class="ts side">● Side project</span></div>
+        <h3>Recruiting tool</h3><p>Sourcing, hiring board, emails and interview booking for our HR team.</p><span class="tp">Built it myself</span>
+      </a>
+  </div>
+
+  <section class="proj" id="onboarding">
+    <div class="proj-head">
+      <div><span class="n">01 / Onboarding</span><h2>Value before the dashboard</h2></div>
+      <div class="story">
+        <p>The old onboarding asked for three things: credentials, an email code, and access to up to ten social accounts. Then it dropped users into an empty product.</p>
+        <p>I cut the steps that didn't earn their place and added one that gives something back. Paste your website, and the product builds your brand profile and writes your first posts.</p>
+        <div class="facts"><span><b>My part:</b> which steps went, which came in</span><span><b>Built by:</b> development and the AI team</span></div>
+      </div>
+    </div>
+    <div class="stage" aria-label="Old and new onboarding, step by step">
+      <div class="race">
+        <div class="lane">
+          <div class="lane-top"><h3>Old flow</h3><span class="mono" id="ob-old-count"></span></div>
+          <div class="frame"><img id="ob-old-img" alt=""><div class="end" id="ob-old-end" hidden><strong>Onboarding is over.</strong><span>The dashboard is empty. Nothing is connected, nothing is written.</span></div></div>
+          <p class="step-label" id="ob-old-label"></p>
+          <p class="has" id="ob-old-has"></p>
+        </div>
+        <div class="lane">
+          <div class="lane-top"><h3>New flow</h3><span class="mono" id="ob-new-count"></span></div>
+          <div class="frame"><img id="ob-new-img" alt=""></div>
+          <p class="step-label" id="ob-new-label"></p>
+          <p class="has" id="ob-new-has"></p>
+        </div>
+      </div>
+      <div class="controls">
+        <button class="cbtn ghost" type="button" id="ob-prev">← Back</button>
+        <input type="range" id="ob-range" min="0" max="5" value="0" step="1" aria-label="Onboarding step">
+        <button class="cbtn" type="button" id="ob-next">Next step →</button>
+      </div>
+      <p class="label-ev">Product screenshots. The demo uses a public brand website and isn't affiliated with that brand. Personal details are blurred.</p>
+    </div>
+    <p class="next"><span><b>What I'd measure next:</b> how many new users schedule a generated post, how many skip the URL step, and how the output holds up on single-page or non-English sites.</span></p>
+  </section>
+
+  <section class="proj" id="sample">
+    <div class="proj-head">
+      <div><span class="n">02 / Sample workspace</span><h2>A brand that doesn't exist</h2></div>
+      <div class="story">
+        <p>A new account has no connected channels, no posts and no messages, so every module looked blank. Nobody could picture the product in use.</p>
+        <p>I made up a fashion label, Ellis &amp; Co., and gave it one campaign that runs through Publisher, Inbox and Analytics. I chose the data to surface features people otherwise miss.</p>
+        <div class="facts"><span><b>My part:</b> led it, created the brand, wrote the data for each module</span><span><b>Built by:</b> developers seeded it</span></div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-bar"><span class="mono">Publisher · tap a pin</span></div>
+      <div class="pins" data-pins="cal">
+        <button class="zoom" type="button" data-src="img/sw-cal.webp" aria-label="Enlarge Publisher calendar"><div class="shot"><img src="img/sw-cal.webp" alt="Publisher calendar filled with Ellis &amp; Co. posts for September"></div></button>
+      </div>
+      <ol class="notes" data-notes="cal"></ol>
+      <div class="stage-bar"><span class="mono">Inbox · tap a pin</span></div>
+      <div class="pins" data-pins="inbox">
+        <button class="zoom" type="button" data-src="img/sw-inbox.webp" aria-label="Enlarge Inbox"><div class="shot"><img src="img/sw-inbox.webp" alt="Inbox with sample conversations for Ellis &amp; Co."></div></button>
+      </div>
+      <ol class="notes" data-notes="inbox"></ol>
+    </div>
+    <p class="next"><span><b>What I'd measure next:</b> which modules new users open in the sample workspace, whether that leads to connecting real accounts, and whether a sample matched to their business type would work better.</span></p>
+  </section>
+
+  <section class="proj" id="brand">
+    <div class="proj-head">
+      <div><span class="n">03 / Brand Knowledge</span><h2>Built from sources, not typed</h2></div>
+      <div class="story">
+        <p>The AI can only write in a brand's voice if it knows the brand. That knowledge used to sit in a settings form: a few colors and a voice description, typed by hand or left empty.</p>
+        <p>I redesigned it so users add sources (a website, documents, past posts) and the product builds the profile. I prototyped the whole module in Lovable before it was built. The same profile now powers onboarding.</p>
+        <div class="facts"><span><b>My part:</b> redesign and prototype</span><span><b>Built by:</b> development</span></div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-bar"><button class="hbtn" type="button" data-hold="bk" aria-pressed="false">Hold to see before</button><span class="state" data-state="bk">Showing: after</span></div>
+      <div class="hold" data-holdpane="bk">
+        <div class="shot"><img src="img/bk-new-1.webp" alt="New Brand Knowledge module: logo, colors with roles, fonts, visual identity"></div>
+        <div class="before" aria-hidden="true"><img src="img/bk-old.webp" alt=""></div>
+      </div>
+      <div class="stage-bar"><span class="mono">My prototype → what shipped</span></div>
+      <div class="duo">
+        <figure><button class="zoom" type="button" data-src="img/bk-proto-2.webp" aria-label="Enlarge prototype"><div class="shot"><img src="img/bk-proto-2.webp" alt="Prototype of Source Materials"></div></button><figcaption>Prototype. I designed for failure too: a source page that can't be reached gets flagged.</figcaption></figure>
+        <figure><button class="zoom" type="button" data-src="img/bk-new-3.webp" aria-label="Enlarge Add Source Material"><div class="shot"><img src="img/bk-new-3.webp" alt="Add Source Material dialog"></div></button><figcaption>Shipped. One source is enough to start, so users without a website aren't blocked.</figcaption></figure>
+      </div>
+    </div>
+    <p class="next"><span><b>What I'd measure next:</b> how many workspaces have a complete profile, and how often people edit the generated fields, which shows how accurate the AI's first attempt is.</span></p>
+  </section>
+
+  <section class="proj" id="nav">
+    <div class="proj-head">
+      <div><span class="n">04 / Navigation</span><h2>Top bar to sidebar</h2></div>
+      <div class="story">
+        <p>The top bar looked dated next to Sprout Social, Hootsuite and Metricool, which all use a sidebar. This was a visual update, not a fix for a measured problem.</p>
+        <p>I prototyped the sidebar in Claude Design, got the PM's approval, and wrote the epic and user stories. It's live for all users.</p>
+        <div class="facts"><span><b>My part:</b> research, prototype, epic and stories</span><span><b>Built by:</b> development</span></div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-bar"><button class="hbtn" type="button" data-hold="nav" aria-pressed="false">Hold to see before</button><span class="state" data-state="nav">Showing: after</span></div>
+      <div class="hold" data-holdpane="nav">
+        <div class="shot"><img src="img/nav-new.webp" alt="New home screen with sidebar navigation"></div>
+        <div class="before" aria-hidden="true"><img src="img/nav-old.webp" alt=""></div>
+      </div>
+    </div>
+    <p class="next"><span><b>What I'd do differently:</b> define a success measure before shipping. Next I'd check which modules people open most and whether the "More" menu hides anything important.</span></p>
+  </section>
+
+  <section class="proj" id="empty">
+    <div class="proj-head">
+      <div><span class="n">05 / Empty states</span><h2>Show the value, then ask</h2></div>
+      <div class="story">
+        <p>Every analytics screen without a connected account showed the same thing: an old illustration and a Connect button. Nothing said what connecting would get you.</p>
+        <p>I worked on a new pattern across the Analytics module. Each empty state now says what you'll be able to track, shows three or four cards with the specifics, and only then asks you to connect.</p>
+        <div class="facts"><span><b>My part:</b> worked on the new pattern across Analytics and other modules</span><span><b>Built by:</b> development</span></div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-bar">
+        <div class="tabs" role="tablist" aria-label="Empty states by channel">
+          <button class="tab" role="tab" type="button" aria-selected="true" data-es="img/es-ig.webp">Instagram</button>
+          <button class="tab" role="tab" type="button" aria-selected="false" data-es="img/es-fb.webp">Facebook competitors</button>
+          <button class="tab" role="tab" type="button" aria-selected="false" data-es="img/es-yt.webp">YouTube competitors</button>
+          <button class="tab" role="tab" type="button" aria-selected="false" data-es="img/es-gbp.webp">Google Business Profile</button>
+        </div>
+        <button class="hbtn" type="button" data-hold="es" aria-pressed="false">Hold to see before</button>
+      </div>
+      <div class="hold" data-holdpane="es">
+        <div class="es-box">
+          <img id="es-img" src="img/es-ig.webp" alt="New Instagram analytics empty state with four value cards and a Connect button">
+          <div class="old-es" aria-hidden="true"><div class="art"></div><div class="cta">+ Connect</div><span class="rec">Recreation · no screenshot of the old version survives</span></div>
+        </div>
+      </div>
+      <div class="stage-bar"><span class="state" data-state="es">Showing: after</span></div>
+      <div class="anatomy">
+        <div><b>1 · Promise</b><span>What you'll be able to track, in one line.</span></div>
+        <div><b>2 · Proof</b><span>Three or four cards naming the specific metrics and features.</span></div>
+        <div><b>3 · Action</b><span>Connect last, with requirements up front (e.g. Business accounts only).</span></div>
+      </div>
+    </div>
+    <p class="next"><span><b>What I'd measure next:</b> the connect rate from each empty state, compared with the old version, and whether stating requirements up front (like "personal accounts are not supported") cuts failed connections.</span></p>
+  </section>
+
+  <section class="proj" id="hr">
+    <div class="proj-head">
+      <div><span class="n">06 / Side project</span><h2>A recruiting tool I built for our HR team</h2></div>
+      <div class="story">
+        <p>I built this for ContentStudio's HR team: one place to find candidates, move them through hiring stages, email them and book interviews.</p>
+        <p>It pulls public LinkedIn profiles by role and location, scores candidates against the role, sends outreach and rejection emails from the board, and lets candidates pick their own interview slot. When they pick, a Google Meet event is created and a confirmation goes out automatically.</p>
+        <div class="facts"><span><b>My part:</b> built and deployed it myself</span><span><b>Runs on:</b> Supabase, Vercel, Google Calendar, Zoho Mail</span></div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="hr-steps" role="tablist" aria-label="Hiring flow"></div>
+      <div class="hr-view">
+        <button class="zoom hr-frame" type="button" id="hr-zoom" data-src="img/hr-find.webp" aria-label="Enlarge screenshot"><img id="hr-img" src="img/hr-find.webp" alt=""></button>
+        <div class="hr-cap"><span class="mono" id="hr-count"></span><h3 id="hr-title"></h3><p id="hr-text"></p></div>
+      </div>
+      <p class="label-ev">Screenshots from the live tool. Candidate names, emails and staff details are blurred.</p>
+    </div>
+    <p class="next"><span><b>What I'd measure next:</b> time from first contact to interview, and how often candidates book their own slot instead of waiting for HR.</span></p>
+  </section>
+
+  <section class="also">
+    <h2>Also shipped</h2>
+    <ul>
+      <li><b>Telegram, WhatsApp and Reddit</b>Integrations added to the platform.</li>
+      <li><b>Homepage revamp</b>The first screen users see after signing in.</li>
+    </ul>
+  </section>
+
+  <section class="contact" id="contact">
+    <div>
+      <h2>Let's talk.</h2>
+      <p class="bio">Business Analyst at ContentStudio since August 2025. B.S. Computer Engineering, COMSATS University Islamabad. Comfortable in Jira, Figma, Lovable, SQL, Python and n8n.</p>
+    </div>
+    <div class="rows">
+      <div class="crow"><span class="v">tehreemnaeemsultan@gmail.com</span><button class="copy" type="button" data-copy="tehreemnaeemsultan@gmail.com">Copy</button></div>
+      <div class="crow"><span class="v">+92 302 8094134</span><button class="copy" type="button" data-copy="+92 302 8094134">Copy</button></div>
+      <div class="crow"><a href="https://www.linkedin.com/in/tehreem-shehzadi-b5b13b360" target="_blank" rel="noopener">LinkedIn ↗</a></div>
+      <div class="crow"><a href="#resume" data-cv>View resume</a></div>
+    </div>
+  </section>
+</div>
+
+<dialog class="cvd" id="cvd" aria-label="Resume"><div class="cvbar"><span>Tehreem Shehzadi · Resume</span><span class="cvact"><a href="Tehreem-Shehzadi-Resume.pdf" download>Download PDF</a><button type="button" id="cv-close">Close ✕</button></span></div><div class="cvpages"><img src="img/cv-1.webp?v=2" alt="Resume page 1" loading="lazy"><img src="img/cv-2.webp?v=2" alt="Resume page 2" loading="lazy"></div></dialog>
+<dialog class="lb" id="lb" aria-label="Enlarged screenshot"><button type="button" id="lb-close">Close ✕</button><img id="lb-img" alt=""></dialog>
+
+<script>
+/* ---------- CONTENT: onboarding steps ---------- */
+const OLD=[
+  ["img/ob-old-1.webp","Create an account","credentials"],
+  ["img/ob-old-2.webp","Verify your email","a 6-digit code"],
+  ["img/ob-old-3.webp","Connect social profiles","access to each account"]
+];
+const NEW=[
+  ["img/ob-new-0.webp","Choose how you'll use it",0],
+  ["img/ob-new-1.webp","Name and timezone",0],
+  ["img/ob-new-2.webp","Business type",0],
+  ["img/ob-new-3.webp","Paste your website",0],
+  ["img/ob-new-4.webp","Brand profile, built live",1],
+  ["img/ob-new-5.webp","First posts, ready to schedule",2]
+];
+/* ---------- CONTENT: hotspot notes (x%, y% on the screenshot) ---------- */
+const PINS={
+  cal:[
+    [45.3,35,"<b>Content categories.</b> Launch, Offers, Style, Stories: color-coded so a month of planning reads at a glance."],
+    [36,97,"<b>Campaign phases and hashtag groups.</b> Tags that show how a real team organizes a launch."],
+    [96.5,39,"<b>Several channels.</b> Posts go to different networks, so the calendar shows cross-channel planning."],
+    [8,32,"<b>Automations.</b> Bulk scheduling, evergreen recycling and RSS sit beside a full calendar."]
+  ],
+  inbox:[
+    [21.8,22,"<b>Every channel in one list.</b> Facebook, Instagram, LinkedIn and reviews."],
+    [40.5,12,"<b>Reviews tab.</b> Seeded with reviews, so the feature is visible instead of empty."],
+    [86.9,71.6,"<b>Internal team note.</b> A colleague flags the lead before anyone replies, which shows collaboration in action."],
+    [91,3.8,"<b>Label and assignment.</b> The conversation is tagged Wholesale and ready to assign."]
+  ]
+};
+
+const $=id=>document.getElementById(id);
+const r=$('ob-range'), prev=$('ob-prev'), nxt=$('ob-next');
+function has(el,level,old){
+  const txt=old?(level?'Still nothing':'Nothing yet'):['Nothing yet','A brand profile','A brand profile and four posts'][level];
+  el.className='has'+(!old&&level===2?' win':'');
+  el.innerHTML=`<span class="tag">User has</span><span>${txt}</span>`;
+}
+function show(i){
+  i=Math.max(0,Math.min(5,i)); r.value=i;
+  const n=NEW[i]; $('ob-new-img').src=n[0]; $('ob-new-img').alt=n[1]; $('ob-new-label').textContent=n[1]; $('ob-new-count').textContent=`${i+1} / ${NEW.length}`; has($('ob-new-has'),n[2],false);
+  if(i<OLD.length){const o=OLD[i];$('ob-old-img').hidden=false;$('ob-old-img').src=o[0];$('ob-old-img').alt=o[1];$('ob-old-end').hidden=true;$('ob-old-label').textContent=`${o[1]}. Asks for ${o[2]}.`;$('ob-old-count').textContent=`${i+1} / ${OLD.length}`;has($('ob-old-has'),0,true)}
+  else{$('ob-old-img').hidden=true;$('ob-old-end').hidden=false;$('ob-old-label').textContent='Finished after 3 steps.';$('ob-old-count').textContent='Done';has($('ob-old-has'),1,true)}
+  prev.disabled=i===0; nxt.disabled=i===5; nxt.textContent=i===5?'End of flow':'Next step →';
+}
+r.addEventListener('input',()=>show(+r.value));
+prev.onclick=()=>show(+r.value-1); nxt.onclick=()=>show(+r.value+1);
+NEW.concat(OLD).forEach(s=>{const im=new Image();im.src=s[0]});
+show(0);
+
+Object.entries(PINS).forEach(([k,list])=>{
+  const wrap=document.querySelector(`[data-pins="${k}"]`), ol=document.querySelector(`[data-notes="${k}"]`);
+  list.forEach(([x,y,html],i)=>{
+    const b=document.createElement('button');b.type='button';b.className='pin';b.textContent=i+1;b.style.left=x+'%';b.style.top=y+'%';b.setAttribute('aria-pressed','false');b.setAttribute('aria-label','Note '+(i+1));
+    wrap.appendChild(b);
+    const li=document.createElement('li');li.innerHTML=`<span>${html}</span>`;ol.appendChild(li);
+    const on=()=>{wrap.querySelectorAll('.pin').forEach((p,j)=>p.setAttribute('aria-pressed',j===i));ol.querySelectorAll('li').forEach((l,j)=>l.classList.toggle('on',j===i))};
+    b.addEventListener('click',e=>{e.stopPropagation();on()});li.addEventListener('click',on);li.addEventListener('mouseenter',on);
+  });
+});
+
+document.querySelectorAll('[data-hold]').forEach(btn=>{
+  const k=btn.dataset.hold, pane=document.querySelector(`[data-holdpane="${k}"]`), st=document.querySelector(`[data-state="${k}"]`);
+  const set=v=>{pane.classList.toggle('showing',v);btn.setAttribute('aria-pressed',v);st.textContent='Showing: '+(v?'before':'after')};
+  btn.addEventListener('pointerdown',e=>{e.preventDefault();try{btn.setPointerCapture(e.pointerId)}catch(_){ }set(true)});
+  ['pointerup','pointercancel','lostpointercapture'].forEach(ev=>btn.addEventListener(ev,()=>set(false)));
+  btn.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();set(true)}});
+  btn.addEventListener('keyup',e=>{if(e.key===' '||e.key==='Enter')set(false)});
+  btn.addEventListener('contextmenu',e=>e.preventDefault());
+});
+
+const lb=$('lb');
+document.addEventListener('click',e=>{
+  if(e.target.closest('.pin'))return;
+  const z=e.target.closest('.zoom'); if(z){$('lb-img').src=z.dataset.src;lb.showModal();return}
+  const c=e.target.closest('[data-copy]'); if(c){navigator.clipboard?.writeText(c.dataset.copy).then(()=>{c.textContent='Copied';setTimeout(()=>c.textContent='Copy',1500)}).catch(()=>{const s=getSelection(),g=document.createRange();g.selectNodeContents(c.previousElementSibling);s.removeAllRanges();s.addRange(g)});return}
+  if(e.target===lb)lb.close();
+});
+$('lb-close').onclick=()=>lb.close();
+document.querySelectorAll('[data-es]').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('[data-es]').forEach(x=>x.setAttribute('aria-selected',x===t));
+  const im=$('es-img');im.src=t.dataset.es;im.alt='New '+t.textContent+' empty state';
+}));
+['img/es-fb.webp','img/es-yt.webp','img/es-gbp.webp'].forEach(s=>{const i=new Image();i.src=s});
+const HR=[
+  ["Find","img/hr-find.webp","Find people","Search public LinkedIn profiles by role and location, then add the best matches to an open role."],
+  ["Track","img/hr-board.webp","Hiring board","Every candidate on one board, from New to Hired, with a match score against the role."],
+  ["Email","img/hr-email.webp","Outreach and rejection","Pre-written outreach and rejection emails, sent from the board and logged to the candidate."],
+  ["Schedule","img/hr-schedule.webp","Interview booking","Candidates get a private link to pick an open slot. The Meet invite and confirmation go out on their own."],
+  ["Review","img/hr-overview.webp","Overview","Open roles, people in progress and the pipeline by stage, at a glance."]
+];
+const hrTabs=document.querySelector('.hr-steps');
+function hrShow(i){
+  const h=HR[i];$('hr-img').src=h[1];$('hr-img').alt=h[2];$('hr-zoom').dataset.src=h[1];
+  $('hr-title').textContent=h[2];$('hr-text').textContent=h[3];$('hr-count').textContent=`Step ${i+1} of ${HR.length}`;
+  hrTabs.querySelectorAll('button').forEach((b,j)=>b.setAttribute('aria-selected',j===i));
+}
+HR.forEach((h,i)=>{const b=document.createElement('button');b.type='button';b.className='tab';b.setAttribute('role','tab');b.textContent=`${i+1}. ${h[0]}`;b.onclick=()=>hrShow(i);hrTabs.appendChild(b);const im=new Image();im.src=h[1]});
+hrShow(0);
+const cvd=$('cvd');
+document.addEventListener('click',e=>{const a=e.target.closest('[data-cv]');if(a){e.preventDefault();cvd.showModal()}});
+$('cv-close').onclick=()=>cvd.close();cvd.addEventListener('click',e=>{if(e.target===cvd)cvd.close()});
+if(location.hash==='#resume')cvd.showModal();
+/* scroll reveal + progress */
+(function(){
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const bar=document.querySelector('.progress');
+  const onScroll=()=>{const h=document.documentElement;const max=h.scrollHeight-innerHeight;bar.style.transform=`scaleX(${max>0?Math.min(1,scrollY/max):0})`};
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+  if(reduce||!('IntersectionObserver' in window))return;
+  const els=[...document.querySelectorAll('.tile,.proj-head,.stage,.next,.also,.contact')];
+  document.querySelectorAll('.tile').forEach((t,i)=>t.style.setProperty('--d',(i%3)*0.09+'s'));
+  els.forEach(e=>{e.classList.add('rv');const r=e.getBoundingClientRect();if(r.top<innerHeight*0.95)e.classList.add('in')});
+  document.documentElement.classList.add('rv-on');
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  els.forEach(e=>{if(!e.classList.contains('in'))io.observe(e)});
+  addEventListener('hashchange',()=>els.forEach(e=>e.classList.add('in')));
+})();
+/* header name appears after the hero name scrolls away */
+(function(){const top=document.querySelector('.top'),h=$('name');
+  const io=new IntersectionObserver(([e])=>top.classList.toggle('scrolled',!e.isIntersecting),{rootMargin:'-60px 0px 0px 0px'});io.observe(h);})();
+
+/* variable-width name that reacts to the pointer */
+(function(){
+  const h=$('name');
+  h.querySelectorAll('.line').forEach(l=>{l.innerHTML=[...l.textContent].map(c=>`<span class="ch">${c}</span>`).join('')});
+  const chars=[...h.querySelectorAll('.ch')];
+  const BASE_W=108,BASE_G=780,MAX_W=125,MIN_W=78,MAX_G=900;
+  const set=(el,w,g)=>el.style.fontVariationSettings=`"wdth" ${w.toFixed(1)},"wght" ${g.toFixed(0)}`;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  let raf=0,px=null,py=null;
+  function frame(){raf=0;
+    const R=Math.max(140,h.getBoundingClientRect().height*0.9);
+    chars.forEach(c=>{const b=c.getBoundingClientRect();const cx=b.left+b.width/2,cy=b.top+b.height/2;
+      const d=Math.hypot(px-cx,(py-cy)*1.4);const t=Math.max(0,1-d/R);const e=t*t*(3-2*t);
+      // near: wide + heavy; mid-distance: slightly condensed, for contrast
+      const w=BASE_W+(MAX_W-BASE_W)*e-(1-e)*(t>0?(BASE_W-MIN_W)*0.35*Math.sin(Math.PI*t):0);
+      set(c,w,BASE_G+(MAX_G-BASE_G)*e);});
+  }
+  const move=e=>{px=e.clientX;py=e.clientY;document.documentElement.classList.add('live-name');if(!raf)raf=requestAnimationFrame(frame)};
+  const intro=document.querySelector('.intro');
+  intro.addEventListener('pointermove',move);
+  intro.addEventListener('pointerleave',()=>{document.documentElement.classList.remove('live-name');chars.forEach(c=>set(c,BASE_W,BASE_G))});
+  // one wave on load (all devices)
+  const start=performance.now()+700,dur=1600;
+  function wave(now){const p=(now-start)/dur;if(p<0)return requestAnimationFrame(wave);
+    if(document.documentElement.classList.contains('live-name'))return;
+    chars.forEach((c,i)=>{const pos=i/(chars.length-1);const d=Math.abs(p*1.4-0.2-pos);const t=Math.max(0,1-d/0.18);const e=t*t*(3-2*t);set(c,BASE_W+(MAX_W-BASE_W)*e,BASE_G+(MAX_G-BASE_G)*e)});
+    if(p<1)requestAnimationFrame(wave);else chars.forEach(c=>set(c,BASE_W,BASE_G));}
+  requestAnimationFrame(wave);
+})();
+/* highlight the nav pill for the section in view */
+(function(){
+  const links=[...document.querySelectorAll('[data-sec]')];
+  const mark=k=>links.forEach(a=>{const on=a.dataset.sec===k;a.classList.toggle('on',on);on?a.setAttribute('aria-current','true'):a.removeAttribute('aria-current')});
+  let cur=null;
+  const pick=()=>{if(cvd.open)return mark('resume');
+    const y=innerHeight*0.35;const w=$('work').getBoundingClientRect(),c=$('contact').getBoundingClientRect();
+    cur=c.top<y?'contact':(w.top<y+innerHeight*0.3?'work':null);
+    if(innerHeight+scrollY>=document.documentElement.scrollHeight-4)cur='contact';
+    mark(cur)};
+  addEventListener('scroll',pick,{passive:true});pick();
+  new MutationObserver(pick).observe(cvd,{attributes:true,attributeFilter:['open']});
+})();
+/* hero deck: deal, fan, tilt, lift */
+(function(){
+  const CARDS=[
+    ["hr","06","Recruiting tool","img/hr-board.webp","40% 20%"],
+    ["empty","05","Empty states","img/es-ig.webp","50% 40%"],
+    ["nav","04","Navigation","img/nav-new.webp","50% 10%"],
+    ["brand","03","Brand Knowledge","img/bk-new-1.webp","70% 20%"],
+    ["sample","02","Sample workspace","img/sw-cal.webp","62% 40%"],
+    ["onboarding","01","Onboarding","img/ob-new-5.webp","45% 30%"]
+  ];
+  const deck=$('deck'),inner=document.createElement('div');inner.className='deck-inner';deck.appendChild(inner);
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const els=CARDS.map(([id,n,t,src,pos],i)=>{const a=document.createElement('a');a.className='card';a.href='#'+id;a.setAttribute('aria-label',`${n} ${t}`);
+    a.innerHTML=`<img src="${src}" alt="" loading="eager"><span class="lab"><span>${t}</span><i>${n}</i></span>`;a.style.zIndex=i+1;a.style.setProperty('--pos',pos);inner.appendChild(a);return a});
+  const N=els.length;let hover=-1;
+  function layout(){
+    const narrow=deck.clientWidth<420, spread=narrow?13:18, gapX=narrow?11:14;
+    els.forEach((el,i)=>{const k=i-(N-1)/2;
+      let rot=k*spread*0.55, x=k*gapX, y=Math.abs(k)*Math.abs(k)*2.6, s=1, z=0;
+      if(hover>=0){const d=i-hover; if(d===0){y-=16;s=1.06;z=60;rot*=0.6}else{x+=Math.sign(d)*4;rot+=Math.sign(d)*3;}}
+      el.style.transform=`translate3d(${x}%,${y}%,${z}px) rotate(${rot}deg) scale(${s})`;
+      el.style.zIndex=hover===i?50:i+1;});
+  }
+  els.forEach((el,i)=>{el.style.transitionDelay=reduce?'0s':(0.35+i*0.09)+'s';
+    el.addEventListener('mouseenter',()=>{hover=i;els.forEach(e=>e.style.transitionDelay='0s');layout()});
+    el.addEventListener('focus',()=>{hover=i;layout()});
+    el.addEventListener('mouseleave',()=>{hover=-1;layout()});el.addEventListener('blur',()=>{hover=-1;layout()});
+  });
+  deck.addEventListener('pointermove',e=>{if(reduce)return;const r=deck.getBoundingClientRect();const px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;inner.style.transform=`rotateY(${px*14}deg) rotateX(${-py*10}deg)`});
+  deck.addEventListener('pointerleave',()=>{inner.style.transform=''});
+  addEventListener('resize',layout);
+  if(matchMedia('(hover: none)').matches)$('deck-hint').textContent='Tap a card to open';
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{deck.classList.add('dealt');layout();setTimeout(()=>els.forEach(e=>e.style.transitionDelay='0s'),1400)}));
+})();
+</script>
+</body>
+</html>
